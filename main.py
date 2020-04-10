@@ -44,8 +44,7 @@ def MenuPrincipal():
             player2 = Jogador(Escolha())
 
         #após a escolha das frotas é possível escolher
-        jogo = partida(player1, player2)
-        print(jogo.getStatus())
+        partida(player1, player2)
 
 
     def CarregarJogo():
@@ -55,13 +54,13 @@ def MenuPrincipal():
 
     #------------------------------------------------ Menu Principal -------------------------------------------------#
 
-    # print("\n                                               \n"
-    #       "          ____| |_____| |___,                    \n"
-    #       "    _____/__________________ \_________.-/       \n"
-    #       "    \         NAVAL BATTLE              /        \n"
-    #       "~~~~~\_________________________________/~~~~~/\~~\n"
-    #       "~~/\~~~~~~~~~~~~~~~~~~/\~~~~~~~~~~~/\~~~~~~~~~~~~\n"
-    #       "~~~~~~~~~~~~~~~/\~~~~~~~~~~~~~~~~~~~~~~/\~~~~~~~~\n")
+    print("\n                                              \n"
+        "          ____| |_____| |___,                     \n"
+        "    _____/__________________ \\_________.-/       \n"
+        "    \\         NAVAL BATTLE              /        \n"
+        "~~~~~\\_________________________________/~~~~~/\\~\n"
+        "~~/\\ ~~~~~~~~~~~~~~~~/\\ ~~~~~~~~~~~/\\~~~~~~~~~~\n"
+        "~~~~~~~~~~~~~~~/\\~~~~~~~~~~~~~~~~~~~~~~/\\~~~~~~~\n")
 
     continuar = True
     while continuar:
@@ -78,7 +77,7 @@ def MenuPrincipal():
                 pvp = gamemodeSelect()
                 if pvp:
                     NovoJogo(pvp)           #se emviar true os dois jogadores são pessoas
-                else:
+                elif pvp == False:
                     NovoJogo(False)         #se enviar false apenas o player1 é uma pessoa
 
             if option == 2:

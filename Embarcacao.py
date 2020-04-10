@@ -5,10 +5,21 @@ class Embarcacao:
         self.__tamanho = setTamanho(tipo)
         self.__tipo = tipo
         self.__posicionado = False
+        self.__posicoes = []
+
+    def setPosicao(self, posi):
+        self.__posicoes.append(posi)
+
+    def removePosicao(self, posi):
+        print("Removendo posicao", posi)
+        self.__posicoes.remove(posi)
 
     def setPosicionado(self, posi):
         """ Define a embarcação como posicionada """
         self.__posicionado = posi
+
+    def getPosicoes(self) :
+        return self.__posicoes
 
     def getPosicionado(self):
         """ Retorna se a embarcação está posicionada """
@@ -32,10 +43,8 @@ class Embarcacao:
             return True
         except AssertionError:
             return False
-            
     def __str__(self):
-        return " * "
-
+        return "  X  "
 
 def setTamanho(tipo):
     """ Retorna o a quantidade de posições que uma embarcação ocupa """

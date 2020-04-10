@@ -1,4 +1,5 @@
 from random import randint
+from Embarcacao import Embarcacao
 
 def Posicionar(player, tabuleiro):
     for tipo in player.getFrota():
@@ -6,28 +7,32 @@ def Posicionar(player, tabuleiro):
             while embarcacao.getPosicionado() == False:
                 localinicial = randint(0, (len(tabuleiro) * len(tabuleiro[0]) - 1))
                 tamanhoEmbarcacao = embarcacao.getTamanho()
-                orientacao = 0 #randint(0, 1)
-
+                orientacao = randint(0, 1)
+                cord_menos, cord, cord_mais, pontas = [],[],[],[]
                 #posicionamento da embarcação é vertical
                 if orientacao == 0:
-                    # variaveis que receberão todos os locais afetados pelo posicionamento da embarcacao
-                    cord_menos, cord, cord_mais, pontas = [],[],[],[]
                     if (((localinicial + ((tamanhoEmbarcacao) * 10)) > 99)):
                         cord_menos, cord, cord_mais, pontas = gerarPosicoes(tamanhoEmbarcacao,  localinicial, "baixo-cima")
-
                     else:
                         cord_menos, cord, cord_mais, pontas = gerarPosicoes(tamanhoEmbarcacao,  localinicial, "cima-baixo")
-
                     #checa se existe algum True no tabuleiro (indicando que o local para o posicionamento é inadequado)
                     checkresult = checagem(cord_menos, cord, cord_mais, pontas, tabuleiro)
-                    if checkresult:
-                        insertMatriz(cord_menos, cord, cord_mais, pontas, tabuleiro)
-                        insertGameMatriz(cord, player, embarcacao)
-                        embarcacao.setPosicionado(True)
-
                 #posicionamento da embarcação é horizontal
-                elif orientacao == 1:
-                    cord_menos, cord, cord_mais, pontas = [],[],[],[]
+                elif orientacao == 1:                    
+                    if encontrarLimite(localinicial, tamanhoEmbarcacao):
+                        cord_menos, cord, cord_mais, pontas = gerarPosicoes(tamanhoEmbarcacao, localinicial, "esquerda-direita")
+                    else:
+                        cord_menos, cord, cord_mais, pontas = gerarPosicoes(tamanhoEmbarcacao, localinicial, "direita-esquerda")
+                    #checa se existe algum True no tabuleiro (indicando que o local para o posicionamento é inadequado)
+                    checkresult = checagem(cord_menos, cord, cord_mais, pontas, tabuleiro)
+
+                if checkresult:
+                    insertMatriz(cord_menos, cord, cord_mais, pontas, tabuleiro)
+                    insertGameMatriz(cord, player, embarcacao)
+                    embarcacao.setPosicionado(True)
+
+    player.setTab(tabVisivel(player, player.getTabuleiro()))
+
 
 def gerarPosicoes(tamanhoEmbarcacao, localinicial, sentido):
     """ Função que retorna todas as cordenadas que podem estar em uso caso já exista uma embarcação
@@ -79,12 +84,41 @@ def gerarPosicoes(tamanhoEmbarcacao, localinicial, sentido):
                 for item in t:
                     temp_cord_mais.append(int(item))
         
+        elif sentido == "esquerda-direita":
+            if localinicial < 10:
+                temp_cord.append(0)
+            if localinicial >= 10 and localinicial <= 19:
+                temp_cord_menos.append(0)
+            for item in list(str(localinicial + i)):
+                temp_cord.append(int(item))
+            if localinicial >= 10:
+                for item in list(str((localinicial - 10) + i)):
+                    temp_cord_menos.append(int(item))
+            if localinicial < 90:
+                for item in list(str((localinicial + 10) + i)):
+                    temp_cord_mais.append(int(item))
+
+        elif sentido == "direita-esquerda":
+            if localinicial < 10:
+                temp_cord.append(0)
+            if localinicial >= 10 and localinicial <= 19:
+                temp_cord_menos.append(0)
+            for item in list(str(localinicial - i)):
+                temp_cord.append(int(item))
+            if localinicial >= 10:
+                for item in list(str((localinicial - 10) - i)):
+                    temp_cord_menos.append(int(item))
+            if localinicial < 90:
+                for item in list(str((localinicial + 10) - i)):
+                    temp_cord_mais.append(int(item))
+        
         if temp_cord_menos != []:
             cord_menos.append(temp_cord_menos)
         if temp_cord != []:
             cord.append(temp_cord)
         if temp_cord_mais != []:
             cord_mais.append(temp_cord_mais)
+
 
     if sentido == "cima-baixo":
         if cord[0][0] != 0 :
@@ -94,6 +128,14 @@ def gerarPosicoes(tamanhoEmbarcacao, localinicial, sentido):
         if cord[0][0] != 9:
             pontas.append([cord[0][0] + 1, cord[0][1]])
         pontas.append([cord[0][0] - tamanhoEmbarcacao, cord[0][1]])
+    if sentido == "esquerda-direita":
+        if cord[0][1] != 0:
+            pontas.append([cord[0][0], cord[0][1] -1])
+        pontas.append([cord[0][0], cord[0][1] + tamanhoEmbarcacao])
+    elif sentido == "direita-esquerda":
+        if cord[0][1] != 9:
+            pontas.append([cord[0][0], cord[0][1] +1])
+        pontas.append([cord[0][0], cord[0][1] - tamanhoEmbarcacao])
 
     return cord_menos, cord, cord_mais, pontas
 
@@ -136,7 +178,45 @@ def insertGameMatriz(cord, player, embarcacao):
     referenciem a mesma."""
     try:
         assert embarcacao.getPosicionado() == False
-        for item in cord:
-            player.updateTabuleiro(item[0], item[1], " * ")
+        for item in cord:            
+            embarcacao.setPosicao([item[0], item[1]])
+            player.updateTabuleiro(item[0], item[1], embarcacao)
     except AssertionError:
         print("Aviso: Erro ao posicionar a embarvação")
+
+
+def encontrarLimite(localinicial, tamanho):
+    """ Retorna false caso o local inicial somado ao tamanho resulte em um número pertinente a uma dezena que
+    diferente do local inicial ex: local inicial = 43 (dezena 40)."""
+    #padrao esquerda - > direita
+    #retorna false caso ultrapasse
+    if localinicial < 10:
+        limite_maior = 10
+        limite_menor = 0
+    else:
+        limite_menor = 10 * int(list(str(localinicial))[0])
+        limite_maior = limite_menor + 9
+
+    if (localinicial + tamanho + 1) > limite_maior:
+        return False
+    return True
+
+def tabVisivel(player, tabuleiro):
+    """ Cria e retorna uma string contendo dados do tabuleiro do jogador. """
+
+    tabStr =("\n _________________________________________________________________\n"
+            "|     |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |\n"
+            "|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|")
+
+    for i in range(len(tabuleiro)):
+        tabStr += "\n|  "+str(i)+"  |"
+        for j in range(len(tabuleiro)):
+            if tabuleiro[i][j] in ["     ", "  X  ", "-.|.-"]:
+                tabStr += ""+str(tabuleiro[i][j])+"|"
+            elif type(tabuleiro[i][j]) == Embarcacao:
+                tabStr += "     |"
+        if i != 9:
+            tabStr += "\n|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|"
+    tabStr += "\n|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|\n"
+
+    return tabStr
