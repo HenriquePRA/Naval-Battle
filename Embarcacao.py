@@ -2,7 +2,7 @@ class Embarcacao:
     def __init__(self, tipo):
         self.__atkRecebidos = 0
         self.__maxDanos = getMaxDanos(tipo)
-        self.__tamanho = setTamanho(tipo)
+        self.__tamanho = self.__maxDanos
         self.__tipo = tipo
         self.__posicionado = False
         self.__posicoes = []
@@ -11,7 +11,6 @@ class Embarcacao:
         self.__posicoes.append(posi)
 
     def removePosicao(self, posi):
-        print("Removendo posicao", posi)
         self.__posicoes.remove(posi)
 
     def setPosicionado(self, posi):
@@ -27,7 +26,7 @@ class Embarcacao:
 
     def getEstado(self):
         """" Retorna true caso a embarcação não tenha recebido o número máxomo de ataques que podem ser recebidos pela
-         mesma e false caso já tenha recebido esse número máximo de ataques. """
+        mesma e false caso já tenha recebido esse número máximo de ataques. """
         return self.__atkRecebidos >= self.__maxDanos
 
     def getTamanho(self):
@@ -36,22 +35,15 @@ class Embarcacao:
 
     def setAtkRecebido(self):
         """" Incrementa em um o número de ataques recebidos por uma embarcação e retorna true, caso a embarcaação já
-         tenha recebido o número máximo de ataques retorna false """
-        try:
-            assert not(self.__atkRecebidos >= self.__maxDanos)
-            self.__atkRecebidos += 1
-            return True
-        except AssertionError:
-            return False
-    def __str__(self):
-        return "  X  "
-
-def setTamanho(tipo):
-    """ Retorna o a quantidade de posições que uma embarcação ocupa """
-    NavioAtaues = {"porta_aviao": 4, "cruzador": 3, "submarino": 2}
-    return NavioAtaues[tipo]
+        tenha recebido o número máximo de ataques retorna false """
+        self.__atkRecebidos += 1
+        self.updateStatus()
+            
+    def updateStatus(self):
+        if self.__atkRecebidos == self.__maxDanos:
+            self.__posicionado = False
 
 def getMaxDanos(tipo):
     """ Retorna o número máximo de ataques que podem ser recebidos por uma embarcação. """
-    NavioAtaues = {"porta_aviao": 3, "cruzador": 2, "submarino": 1}
-    return NavioAtaues[tipo]
+    NavioAtaques = {"porta_aviao": 4, "cruzador": 3, "submarino": 2}
+    return NavioAtaques[tipo]

@@ -15,13 +15,13 @@ def Escolha(bot = False):
             escolher uma embarcação de qualquer tipo """
 
             if embarcacoesdispo["porta_aviao"] > 0:
-                print('\n[1] Porta-avião\n * Ocupa 4 células\n * Resiste a 3 ataques\n')
+                print('\n[1] Porta-avião\n * Ocupa 4 células\n * Resiste a 3 ataques')
             if embarcacoesdispo["cruzador"] > 0:
-                print('[2] Cruzador\n * Ocupa 3 células\n * Resiste a 2 ataques\n')
+                print('\n[2] Cruzador\n * Ocupa 3 células\n * Resiste a 2 ataques')
             if embarcacoesdispo["submarino"] > 0:
-                print('[3] Submarino\n * Ocupa 2 células\n * Resiste a 1 ataque\n')
+                print('\n[3] Submarino\n * Ocupa 2 células\n * Resiste a 1 ataque')
             if (embarcacoesUsadas["porta_aviao"] + embarcacoesUsadas["cruzador"] + embarcacoesUsadas["submarino"]) > 0:
-                print("[4] Finalizar Seleção\n * Usa como frota as embarcações já selecionadas\n")
+                print("\n[4] Finalizar Seleção\n * Usa como frota as embarcações já selecionadas")
 
         def escolherEmbarcacao(embarcacoesusadas, embarcacoesdispo):
             """ Recebe um dicionário de dados com as embarcações já usadas, outro com as embarcações disponíveis para
@@ -31,7 +31,7 @@ def Escolha(bot = False):
             try:
                 assert (embarcacoesdispo["porta_aviao"] + embarcacoesdispo["cruzador"] + embarcacoesdispo["submarino"]) > 0
                 exibirOpcoes(embarcacoesdispo)
-                embarcacaoEscolhida = input(">> ")
+                embarcacaoEscolhida = input("\n>> ")
                 embarcacaoEscolhida = int(embarcacaoEscolhida)
 
                 if (embarcacaoEscolhida == 1) and (embarcacoesdispo["porta_aviao"] > 0):

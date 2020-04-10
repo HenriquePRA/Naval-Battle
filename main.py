@@ -32,25 +32,22 @@ def MenuPrincipal():
     def NovoJogo(modo):
         """ A função novo jogo é responsável por iniciar uma nova partida, se houverem arquivos de jogos salvos
          eles são substituidos por novos arquivos gerados pelo jogo """
+
+        n1 = input("\nInforme o nome do Player 1: ")
         
-        print("\nEscolha de frota do Player 1\n")
-        player1 = Jogador(Escolha())
+        print("\nEscolha de frota ["+str(n1)+"]" )
+        player1 = Jogador(Escolha(), n1)
         player2 = None
 
         if modo == False:
-            player2 = Jogador(Escolha(True), "bot")
+            player2 = Jogador(Escolha(True), "Bot", "bot")
         else:
-            print("\nEscolha de frota do Player 2\n")
-            player2 = Jogador(Escolha())
+            n2 = input("\nInforme o nome do Player 2: ")
+            print("\nEscolha de frota ["+str(n2)+"]")
+            player2 = Jogador(Escolha(), n2)
 
         #após a escolha das frotas é possível escolher
         partida(player1, player2)
-
-
-    def CarregarJogo():
-        """ A função carregar carrega um jogo apartir de arquivos JSON já salvos na memória do jogo, caso os arquivos
-        não existam e"""
-        return True
 
     #------------------------------------------------ Menu Principal -------------------------------------------------#
 
@@ -66,8 +63,7 @@ def MenuPrincipal():
     while continuar:
         print("\nBem-vindo ao jogo de batalha naval.\n\n"
                 "[1] - Iniciar uma nova partida\n"
-                "[2] - Carregar uma partida já existente\n"
-                "[3] - Finalizar o jogo\n\n")
+                "[2] - Finalizar o jogo\n")
         option = input(">> ")
         try:
             option = int(option)
@@ -79,18 +75,11 @@ def MenuPrincipal():
                     NovoJogo(pvp)           #se emviar true os dois jogadores são pessoas
                 elif pvp == False:
                     NovoJogo(False)         #se enviar false apenas o player1 é uma pessoa
-
             if option == 2:
-                ExisteJogo = CarregarJogo()
-                if ExisteJogo:
-                    pass
-
-            if option == 3:
                 continuar = False
                 
         except ValueError:
             print("\nInforme um número inteiro !\n")
         except AssertionError:
             print("\nOpção indisponível !\nTente novamente.")
-
 MenuPrincipal()

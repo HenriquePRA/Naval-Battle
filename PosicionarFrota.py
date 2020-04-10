@@ -211,7 +211,7 @@ def tabVisivel(player, tabuleiro):
     for i in range(len(tabuleiro)):
         tabStr += "\n|  "+str(i)+"  |"
         for j in range(len(tabuleiro)):
-            if tabuleiro[i][j] in ["     ", "  X  ", "-.|.-"]:
+            if tabuleiro[i][j] in ["     ", "  X  ", ".\\w/."]:
                 tabStr += ""+str(tabuleiro[i][j])+"|"
             elif type(tabuleiro[i][j]) == Embarcacao:
                 tabStr += "     |"
