@@ -9,14 +9,15 @@ Possúi 5 módulos: main.py, Escolha.py, Jogador.py,  Embarcacao.py, Partida.py,
 
 * main.py - Módulo principal, responsável por iniciar e finalizar o jogo e permite que o usuário escolha o modo de jogo, faz uso dos modulos Jogador.py, Escolha.py e Partida.py
 
-  ![](screenshots/menuprincipal.jpg)
+  ![]()
+  IMG 1
 
 * Escolha.py - Módulo que possúi apenas a função Escolha, a função escolha recebe uma variável booleana como argumento dependendo do
 estado da variável a embarcação é escolhida automaticamente, caso não seja o caso é apresentado um menu interativo com o qual o usuário 
 pode escolher a sua frota de embarcações, retorna um dicionário de dados contendo vetores que contem as embarcações escolhidas.
 
-  ![](screenshots/escolha.jpg)
- 
+  ![]()
+  IMG 2
  * Jogador.py - Módulo que contem a classe Jogador, responsável por guardar a frota, numero de embarcoes, matrizes usadas durante o posicionamento e o jogo, string formada a partir da matriz do jogo, o tipo de jogador(player ou bot) e o nome do jogador.
  
  * Embarcacao.y - Módulo que contem a classe Embarcacao, responavel por armazenar o número de ataques recebidos por uma embarcação
@@ -28,11 +29,13 @@ pode escolher a sua frota de embarcações, retorna um dicionário de dados cont
  
     * Jogadas durante uma partida.
     
-    ![](screenshots/batalha.jpg)
+    ![]()
+    IMG 3
    
     * Finalização de uma partida.
     
-    ![](screenshots/finale.jpg)
+    ![]()
+    IMG 4
    
  * PosicionarFrota.py - Módulo que contém funções responsáveis por posicionar a frota de um jogador em seus tabuleiro, apesar do seu
  objetivo ser simples sua criação foi a parte mais complexa do projeto tendo em vista as regras do jogo que são
