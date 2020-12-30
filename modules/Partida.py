@@ -9,7 +9,6 @@ def partida(player1, player2):
     #iniciação dos tabuleiros
     player1.preencherTabuleiro()
     player2.preencherTabuleiro()
-
     
     tabuleiroP1 = player1.getposMatriz()
     tabuleiroP2 = player2.getposMatriz()
@@ -19,9 +18,6 @@ def partida(player1, player2):
     Posicionar(player2, tabuleiroP2)
 
     #tabuleiro convertido para string usado no jogo
-    # player1.setTab(tabVisivel(tabuleiroP1))
-    # player2.setTab(tabVisivel(tabuleiroP2))
-
 
     partida = True    
     jogador_da_vez = caraCoroa(player1, player2)
