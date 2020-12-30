@@ -1,4 +1,4 @@
-from PosicionarFrota import tabVisivel
+from modules.PosicionarFrota import tabVisivel
 
 class Jogador:
     def __init__(self, frota, name, tipo = "player"):

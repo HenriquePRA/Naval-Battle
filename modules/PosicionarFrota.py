@@ -1,5 +1,5 @@
 from random import randint
-from Embarcacao import Embarcacao
+from modules.Embarcacao import Embarcacao
 
 def Posicionar(player, tabuleiro):
     for tipo in player.getFrota():
