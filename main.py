@@ -1,6 +1,6 @@
-from Escolha import Escolha
-from Jogador import Jogador
-from Partida import partida
+from modules.Escolha import Escolha
+from modules.Jogador import Jogador
+from modules.Partida import partida
 
 def MenuPrincipal():
     """ Menu principal do jogo, a partir dele é possível carregar um jogo salvo ou iniciar um novo jogo. """

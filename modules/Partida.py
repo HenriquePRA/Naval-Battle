@@ -1,8 +1,8 @@
-from Escolha import Escolha
-from Jogador import Jogador
+from modules.Escolha import Escolha
+from modules.Jogador import Jogador
 from random import randint
-from PosicionarFrota import Posicionar
-from Embarcacao import Embarcacao
+from modules.PosicionarFrota import Posicionar
+from modules.Embarcacao import Embarcacao
 
 def partida(player1, player2):
 

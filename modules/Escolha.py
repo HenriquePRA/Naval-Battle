@@ -1,4 +1,4 @@
-from Embarcacao import Embarcacao
+from modules.Embarcacao import Embarcacao
 
 def Escolha(bot = False):
     """ Função que permite ao usuário escolher a frota de embarcaçoes, retorna um dicionário tendo o nome das
