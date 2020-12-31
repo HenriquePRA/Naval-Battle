@@ -10,7 +10,7 @@
 
 <a name="Sobre"></a>
 ## Sobre :information_source:
-Feito utilizando python em 2018 como projeto final da disciplina de Algoritimo e Programação Estruturada, trata-se de um jogo de batalha naval que pode ser jogado usando o console do python no modo jogador contra jogador ou jogador contra bot, faz uso de modularização, funções, POO básico, e estruturas de dados simples.
+Feito em python como projeto final da disciplina de Algoritimo e Programação Estruturada, trata-se de um jogo de batalha naval que pode ser jogado usando o console do python no modo jogador contra jogador ou jogador contra bot, faz uso de modularização, funções, POO básico, e estruturas de dados simples.
 
 <a name="Características"></a>
 ## Características :page_facing_up:
