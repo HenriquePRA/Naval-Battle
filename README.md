@@ -10,8 +10,7 @@
 
 <a name="Sobre"></a>
 ## Sobre :information_source:
-Este é o repositório da reconstrução do projeto final da disciplina de Algoritmo e Programação Estruturada feito utilizando python, 
-fiz esse projeto na faculdade em 2018, diferentemente do projeto original esse projeto faz uso de classes, algumas estruturas de dados clássicas, modularização e funções. ou seja em resumo faz tudo que o projeto anterior fazia só que melhor e de forma mais eficiente.
+Feito utilizando python em 2018 como projeto final da disciplina de Algoritimo e Programação Estruturada, trata-se de um jogo de batalha naval que pode ser jogado usando o console do python no modo jogador contra jogador ou jogador contra bot, faz uso de modularização, funções, POO básico, e estruturas de dados simples.
 
 <a name="Características"></a>
 ## Características :page_facing_up:
