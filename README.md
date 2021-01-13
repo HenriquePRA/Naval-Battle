@@ -60,7 +60,7 @@ Finalizado :v:
 
 1. Python 3.5 ou superior.
 
-## ## Rodando o projeto :running:
+## Rodando o projeto :running:
 
 1. Clone o repositório.
 2. Execute o arquivo NavalBattle.py usando um interpretador python.
