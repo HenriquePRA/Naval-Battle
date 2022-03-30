@@ -29,7 +29,7 @@ pode escolher a sua frota de embarcações, retorna um dicionário de dados cont
   
  * Jogador.py - Módulo que contem a classe Jogador, responsável por guardar a frota, numero de embarcoes, matrizes usadas durante o posicionamento e o jogo, string formada a partir da matriz do jogo, o tipo de jogador(player ou bot) e o nome do jogador.
  
- * Embarcacao.y - Módulo que contem a classe Embarcacao, responavel por armazenar o número de ataques recebidos por uma embarcação
+ * Embarcacao.py - Módulo que contem a classe Embarcacao, responavel por armazenar o número de ataques recebidos por uma embarcação
  o maximo de ataques que uma embarcação pode receber dependendo do seu tipo, a quantidade de células do tabuleiro que a embarcação 
  ocupa, o seu tipo, se esta posicionada em um tabuleiro e as posiçoes que ocupa.
  
