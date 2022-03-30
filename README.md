@@ -42,7 +42,7 @@ pode escolher a sua frota de embarcações, retorna um dicionário de dados cont
    
     * Finalização de uma partida.
     
-    ![](https://raw.githubusercontent.com/HenriquePRA/Naval-Battle/screenshots/screenshots/img3.jpg)
+    ![](https://raw.githubusercontent.com/HenriquePRA/Naval-Battle/screenshots/screenshots/img4.jpg)
    
  * PosicionarFrota.py - Módulo que contém funções responsáveis por posicionar a frota de um jogador em seus tabuleiro, apesar do seu
  objetivo ser simples sua criação foi a parte mais complexa do projeto tendo em vista as regras do jogo que são
